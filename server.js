@@ -7,9 +7,11 @@ const path = require('path');
 
 const app = express();
 
-// app.get('/api/animals', (req, res) => {
-//   res.json(animals);
-// });
+// Parse incoming string or array data
+app.use(express.urlencoded({ extended: true}));
+// Parse incoming JSON data
+app.use(express.json());
+
 
 function filterByQuery(query, animalsArray) {
   let personalityTraitsArray = [];
@@ -55,13 +57,6 @@ function findById(id, animalsArray) {
   return result;
 }
 
-// function createNewAnimal(body, animalsArray) {
-//   const animal = body;
-//   animalsArray.push(animal);
-
-//   return body;
-// }
-
 function createNewAnimal(body, animalsArray) {
   const animal = body;
   animalsArray.push(animal);
@@ -96,7 +91,6 @@ function validateAnimal(animal) {
 
 app.get('/api/animals', (req, res) => {
   let results = animals;
-  // console.log(req.query)
   if (req.query) {
     results = filterByQuery(req.query, results);
   }
@@ -111,24 +105,6 @@ app.get('/api/animals/:id', (req, res) => {
       res.send(404);
     }
 });
-
-// Parse incoming string or array data
-app.use(express.urlencoded({ extended: true}));
-// Parse incoming JSON data
-app.use(express.json());
-
-// app.post('/api/animals', (req, res) => {
-//   // req.body is where our incoming content will be
-//   console.log(req.body);
-//   res.json(req.body);
-// });
-
-// app.post('/api/animals', (req, res) => {
-//   // Set id based on what the next index of the array will be
-//   req.body.id = animals.length.toString();
-
-//   res.json(req.body);
-// })
 
 app.post('/api/animals', (req, res) => {
   // Set id based on what the next index of the array will be
