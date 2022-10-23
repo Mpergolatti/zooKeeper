@@ -101,22 +101,16 @@
       ]
     },
     {
-      "name": "Larry",
-      "species": "lemur",
+      "name": "Stella",
+      "species": "Dog",
       "diet": "omnivore",
       "personalityTraits": [
-        "hungry"
+        "hungry",
+        "anxious",
+        "loving",
+        "goofy"
       ],
       "id": "10"
-    },
-    {
-      "name": "Larry",
-      "species": "lemur",
-      "diet": "food",
-      "personalityTraits": [
-        "hungry"
-      ],
-      "id": "11"
     }
   ]
 }
